@@ -1,2 +1,3 @@
-<input type="searchValue" placeholder="test" [(ngModel)]="searchValue" >
-<button (click)="setUserRepoData()">Show user repo</button>
+<input type="search" placeholder="test" [formControl]="searchControl">
+<button (click)="setUserRepoData()" [disabled]="isDisabled">Show user repo</button>
+<p [hidden]="!isRequiredError">required</p>
