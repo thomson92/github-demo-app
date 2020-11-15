@@ -5,11 +5,16 @@ import { GitHubRoutingModule } from './github-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GithubDashboardComponent } from './containers/github-dashboard/github-dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchWrapperComponent } from './containers/search-wrapper/search-wrapper.component';
 
 
 
 @NgModule({
-  declarations: [SearchBarComponent, GithubDashboardComponent],
+  declarations: [
+    SearchBarComponent,
+    GithubDashboardComponent,
+    SearchWrapperComponent
+  ],
   imports: [
     CommonModule,
     GitHubRoutingModule,
