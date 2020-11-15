@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GithubFacade } from '@github/github.facade';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,8 +9,9 @@ import { Component } from '@angular/core';
 export class SearchBarComponent {
   public searchValue: string;
 
-  public searchValueChange(newValue: string): void {
-    this.searchValue = newValue;
-    // todo
+  constructor(private githubFacade: GithubFacade) { }
+
+  public setUserRepoData(): void {
+    this.githubFacade.setUserRepoData(this.searchValue);
   }
 }

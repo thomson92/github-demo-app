@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('src/app/github/github.module').then(m => m.GithubModule)
+    loadChildren: () => import('@github/github.module').then(m => m.GithubModule)
   },
   {
     path: '**',
