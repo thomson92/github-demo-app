@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GithubDashboardComponent } from './containers/github-dashboard/github-dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchWrapperComponent } from './containers/search-wrapper/search-wrapper.component';
+import { RepositoriesComponent } from './containers/repositories/repositories.component';
+import { RepositoryComponent } from './components/repository/repository.component';
 
 
 
@@ -13,7 +15,9 @@ import { SearchWrapperComponent } from './containers/search-wrapper/search-wrapp
   declarations: [
     SearchBarComponent,
     GithubDashboardComponent,
-    SearchWrapperComponent
+    SearchWrapperComponent,
+    RepositoriesComponent,
+    RepositoryComponent
   ],
   imports: [
     CommonModule,

@@ -9,7 +9,7 @@ export class GithubApi {
 
     constructor(private http: HttpClient) { }
 
-    getUserRepoData(userName: string): Observable<any> {
-        return this.http.get(`https://api.github.com/users/${userName}/repos`);
+    public getUserRepoData(userName: string): Observable<any[]> {
+        return this.http.get<any[]>(`https://api.github.com/users/${userName}/repos`);
     }
 }
