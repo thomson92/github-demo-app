@@ -1,0 +1,44 @@
+@import "custom-properties.scss";
+@import "inputs.scss";
+
+* {
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  background-color: hsl(var(--bg-color));
+}
+
+button {
+  border: none;
+  padding: var(--base-space);
+  cursor: pointer;
+  padding: var(--base-space) calc(var(--base-space) * 2);
+  font-weight: 500;
+  color: hsl(var(--bg-color));
+  border-radius: var(--interactable-border-radious);
+  background-color: hsl(var(--secondary-color));
+
+  &:hover {
+    background-color: hsla(var(--secondary-color), 0.9);
+  }
+
+  &:active {
+    background-color: hsla(var(--secondary-color), 0.8);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: hsla(var(--secondary-color), 0.7);
+    color: hsla(var(--bg-color), 0.7);
+  }
+}
+
+ol {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--base-space);
+  padding: 0 var(--base-space);
+}

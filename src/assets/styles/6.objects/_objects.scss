@@ -1,0 +1,11 @@
+@import "table.scss";
+@import "text.scss";
+
+
+.position-rel {
+  position: relative;
+}
+
+.mg-top--md {
+  margin-top: var(--base-space);
+}
