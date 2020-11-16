@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { GithubFacade } from '@github/github.facade';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-wrapper',
@@ -14,10 +14,13 @@ export class SearchWrapperComponent implements OnInit, OnDestroy {
   public searchControl = new FormControl(null, Validators.required);
   public isDisabled = true;
   public readonly placeholderText = 'Provide github user name';
+  public isFetching: Observable<boolean>;
 
   private subscriptions = new Subscription();
 
-  constructor(private githubFacade: GithubFacade) { }
+  constructor(private githubFacade: GithubFacade) {
+    this.isFetching = githubFacade.isFetching();
+  }
 
   public ngOnInit(): void {
     this.setValueChangesSubscription();

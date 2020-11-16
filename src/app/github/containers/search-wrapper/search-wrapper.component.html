@@ -1,2 +1,3 @@
-<app-search-bar [placeholderText]="placeholderText" [searchBarControl]="searchControl" [isDisabled]="isDisabled"
-  [isRequiredError]="isRequiredError" (searchValueEmitter)="fetchUserRepositories()"></app-search-bar>
+<app-search-bar [placeholderText]="placeholderText" [searchBarControl]="searchControl"
+  [isDisabled]="isDisabled || (isFetching | async)" [isRequiredError]="isRequiredError"
+  (searchValueEmitter)="fetchUserRepositories()"></app-search-bar>

@@ -7,12 +7,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class GithubState {
 
-    private updating = new BehaviorSubject<boolean>(false);
+    private fetching = new BehaviorSubject<boolean>(false);
     private userNameValid = new BehaviorSubject<boolean>(null);
     private userRepositories = new BehaviorSubject<IRepository[]>(null);
 
-    public isUpdating(): Observable<boolean> {
-        return this.updating.asObservable();
+    public isFetching(): Observable<boolean> {
+        return this.fetching.asObservable();
     }
 
     public isUserNameValid(): Observable<boolean> {
@@ -23,12 +23,12 @@ export class GithubState {
         return this.userRepositories.asObservable();
     }
 
-    public setUpdating(isUpdating: boolean): void {
-        this.updating.next(isUpdating);
+    public setFetching(isUpdating: boolean): void {
+        this.fetching.next(isUpdating);
     }
 
     public setUserNameValidity(isValid: boolean): void {
-        this.updating.next(isValid);
+        this.fetching.next(isValid);
     }
 
     public setUserRepositories(userRepos: IRepository[]): void {

@@ -17,8 +17,12 @@ export class GithubFacade {
         return this.githubState.getRepositories();
     }
 
+    public isFetching(): Observable<boolean> {
+        return this.githubState.isFetching();
+    }
+
     public fetchUserRepositories(userName: string): void {
-        this.githubState.setUpdating(true);
+        this.githubState.setFetching(true);
         this.githubApi.getUserRepositories(userName)
             .pipe(
                 map(repositories => repositories.map(repository => {
@@ -35,12 +39,12 @@ export class GithubFacade {
                     this.githubState.setUserNameValidity(true);
                 },
                 (error: any) => this.githubState.setUserNameValidity(false),
-                () => this.githubState.setUpdating(false)
+                () => this.githubState.setFetching(false)
             );
     }
 
     public fetchRepositoryBranches(userName: string, repo: IRepository): void {
-        this.githubState.setUpdating(true);
+        this.githubState.setFetching(true);
         this.githubApi.getRepoBranches(userName, repo.name)
             .pipe(
                 map(branches => branches.map(branch => {
@@ -66,7 +70,7 @@ export class GithubFacade {
                     console.error(`error occurred while fetching ${repo.name} branches`);
                     console.error(error);
                 },
-                () => this.githubState.setUpdating(false)
+                () => this.githubState.setFetching(false)
             );
     }
 }
