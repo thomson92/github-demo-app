@@ -23,6 +23,7 @@ export class GithubFacade {
             .pipe(
                 map(repositories => repositories.map(repository => {
                     return {
+                        id: repository.id,
                         name: repository.name,
                         ownerLogin: repository.owner.login
                     } as IRepository;
@@ -53,6 +54,7 @@ export class GithubFacade {
                 (branches: any[]) => {
 
                     const repoToReplace = {
+                        id: repo.id,
                         name: repo.name,
                         ownerLogin: repo.ownerLogin,
                         branches

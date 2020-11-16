@@ -37,7 +37,7 @@ export class GithubState {
 
     public updateFetchedRepositories(repositoryToReplace: IRepository): void {
         const currentRepositories = this.userRepositories.getValue();
-        const indexOfUpdated = currentRepositories.findIndex(category => category.name === repositoryToReplace.name);
+        const indexOfUpdated = currentRepositories.findIndex(category => category.id === repositoryToReplace.id);
         currentRepositories[indexOfUpdated] = repositoryToReplace;
         this.userRepositories.next([...currentRepositories]);
     }
