@@ -1,4 +1,8 @@
-<li class="item">
-  <p class="label--default"> {{repositoryData.name}}</p>
-  <p class="label--default"> {{repositoryData.ownerLogin}}</p>
+<li class="item" (click)="toggleDetailsVisbility()">
+  <p class="line-height--default"> {{repositoryData.name}}</p>
+  <p class="line-height--default"> {{repositoryData.ownerLogin}}</p>
+
+  <ng-container *ngIf="repositoryData.branches && isVisible">
+    <app-branches [branches]="repositoryData.branches"></app-branches>
+  </ng-container>
 </li>

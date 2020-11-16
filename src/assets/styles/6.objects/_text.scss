@@ -1,4 +1,4 @@
-.label--default {
+.line-height--default {
   line-height: 1.5;
 }
 
@@ -10,4 +10,8 @@
   &--error {
     color: hsl(var(--danger-color));
   }
+}
+
+.txt--break-all {
+  word-break: break-all;
 }

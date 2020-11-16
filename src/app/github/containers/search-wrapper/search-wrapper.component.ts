@@ -13,7 +13,7 @@ export class SearchWrapperComponent implements OnInit, OnDestroy {
 
   public searchControl = new FormControl(null, Validators.required);
   public isDisabled = true;
-  public readonly placeholderText = 'Provide github username';
+  public readonly placeholderText = 'Provide github user name';
 
   private subscriptions = new Subscription();
 
@@ -27,8 +27,8 @@ export class SearchWrapperComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  public setUserRepoData(): void {
-    this.githubFacade.setUserRepoData(this.searchControl.value);
+  public fetchUserRepositories(): void {
+    this.githubFacade.fetchUserRepositories(this.searchControl.value);
   }
 
   public get isRequiredError(): boolean {

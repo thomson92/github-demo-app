@@ -7,9 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class GithubApi {
 
+    private static GITHUB_BASE_URL = 'https://api.github.com';
+
     constructor(private http: HttpClient) { }
 
-    public getUserRepoData(userName: string): Observable<any[]> {
-        return this.http.get<any[]>(`https://api.github.com/users/${userName}/repos`);
+    public getUserRepositories(userName: string): Observable<any[]> {
+        return this.http.get<any[]>(`${GithubApi.GITHUB_BASE_URL}/users/${userName}/repos`);
+    }
+
+    public getRepoBranches(userName: string, repoName: string): Observable<any[]> {
+        return this.http.get<any[]>(`${GithubApi.GITHUB_BASE_URL}/repos/${userName}/${repoName}/branches`);
     }
 }
