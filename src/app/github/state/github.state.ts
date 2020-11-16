@@ -31,7 +31,14 @@ export class GithubState {
         this.updating.next(isValid);
     }
 
-    public setUserRepoData(userRepos: IRepository[]): void {
+    public setUserRepositories(userRepos: IRepository[]): void {
         this.userRepositories.next(userRepos);
+    }
+
+    public updateFetchedRepositories(repositoryToReplace: IRepository): void {
+        const currentRepositories = this.userRepositories.getValue();
+        const indexOfUpdated = currentRepositories.findIndex(category => category.name === repositoryToReplace.name);
+        currentRepositories[indexOfUpdated] = repositoryToReplace;
+        this.userRepositories.next([...currentRepositories]);
     }
 }

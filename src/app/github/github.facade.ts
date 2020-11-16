@@ -4,6 +4,7 @@ import { GithubApi } from './api/github.api';
 import { IRepository } from './models/repository.model';
 import { GithubState } from './state/github.state';
 import { map } from 'rxjs/operators';
+import { IBranch } from './models/branch.model';
 
 @Injectable({
     providedIn: 'root'
@@ -16,9 +17,9 @@ export class GithubFacade {
         return this.githubState.getRepositories();
     }
 
-    public setUserRepoData(userName: string): void {
+    public fetchUserRepositories(userName: string): void {
         this.githubState.setUpdating(true);
-        this.githubApi.getUserRepoData(userName)
+        this.githubApi.getUserRepositories(userName)
             .pipe(
                 map(repositories => repositories.map(repository => {
                     return {
@@ -29,10 +30,40 @@ export class GithubFacade {
             )
             .subscribe(
                 (userRepos: any[]) => {
-                    this.githubState.setUserRepoData(userRepos);
+                    this.githubState.setUserRepositories(userRepos);
                     this.githubState.setUserNameValidity(true);
                 },
                 (error: any) => this.githubState.setUserNameValidity(false),
+                () => this.githubState.setUpdating(false)
+            );
+    }
+
+    public fetchRepositoryBranches(userName: string, repo: IRepository): void {
+        this.githubState.setUpdating(true);
+        this.githubApi.getRepoBranches(userName, repo.name)
+            .pipe(
+                map(branches => branches.map(branch => {
+                    return {
+                        name: branch.name,
+                        lastCommitSha: branch?.commit.sha
+                    } as IBranch;
+                }))
+            )
+            .subscribe(
+                (branches: any[]) => {
+
+                    const repoToReplace = {
+                        name: repo.name,
+                        ownerLogin: repo.ownerLogin,
+                        branches
+                    } as IRepository;
+
+                    this.githubState.updateFetchedRepositories(repoToReplace);
+                },
+                (error: any) => {
+                    console.error(`error occurred while fetching ${repo.name} branches`);
+                    console.error(error);
+                },
                 () => this.githubState.setUpdating(false)
             );
     }

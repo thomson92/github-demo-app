@@ -42,3 +42,33 @@ ol {
   gap: var(--base-space);
   padding: 0 var(--base-space);
 }
+
+table {
+  display: block;
+
+  tr {
+    display: flex;
+    flex-direction: column;
+    padding: var(--base-space) 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid hsla(var(--secondary-color), 0.1);
+    }
+
+    th {
+      font-weight: 700;
+    }
+  }
+}
+
+@media (min-width: 668px) {
+  table {
+    display: flex;
+    flex-direction: column;
+
+    tr {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

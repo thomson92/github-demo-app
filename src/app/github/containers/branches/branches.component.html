@@ -1,0 +1,11 @@
+<table class="mg-top--md">
+  <tr>
+    <th class="item--sm line-height--default">Branch name</th>
+    <th class="item--xl line-height--default">Last commit sha</th>
+  </tr>
+  <tr *ngFor="let branch of branches">
+    <app-branch [branch]="branch"></app-branch>
+  </tr>
+
+</table>
+<p *ngIf="branches && branches.length === 0">No branches found for this repository</p>

@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchWrapperComponent } from './containers/search-wrapper/search-wrapper.component';
 import { RepositoriesComponent } from './containers/repositories/repositories.component';
 import { RepositoryComponent } from './components/repository/repository.component';
+import { BranchesComponent } from './containers/branches/branches.component';
+import { BranchComponent } from './components/branch/branch.component';
 
 
 
@@ -17,7 +19,9 @@ import { RepositoryComponent } from './components/repository/repository.componen
     GithubDashboardComponent,
     SearchWrapperComponent,
     RepositoriesComponent,
-    RepositoryComponent
+    RepositoryComponent,
+    BranchesComponent,
+    BranchComponent
   ],
   imports: [
     CommonModule,
