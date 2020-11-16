@@ -1,0 +1,6 @@
+.item {
+  padding: var(--base-space);
+  border: 1px solid hsla(var(--secondary-color), 0.1);
+  border-radius: var(--block-border-radious);
+  cursor: pointer;
+}

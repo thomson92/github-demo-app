@@ -1,0 +1,16 @@
+input[type=search] {
+    border: none;
+    padding: var(--base-space);
+    background-color: hsl(var(--bg-color));
+    border-radius: var(--interactable-border-radious);
+    border: 3px solid transparent;
+    min-width: calc(var(--base-space) * 20);
+
+    &.required {
+        border-color: hsl(var( --danger-color));
+    }
+
+    &::-webkit-search-cancel-button{
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,6 @@
+:host {
+  margin: auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: calc(var(--base-space) * 2);
+}

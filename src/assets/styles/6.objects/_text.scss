@@ -1,0 +1,13 @@
+.label--default {
+  line-height: 1.5;
+}
+
+.validation-msg {
+  position: absolute;
+  transform: translate(-50%, 5px);
+  left: 50%;
+
+  &--error {
+    color: hsl(var(--danger-color));
+  }
+}

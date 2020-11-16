@@ -1,3 +1,7 @@
-<input type="search" placeholder="{{placeholderText}}" [formControl]="searchBarControl">
+<div class="position-rel">
+  <input [ngClass]="{'required': isRequiredError}" type="search" placeholder="{{placeholderText}}"
+    [formControl]="searchBarControl">
+  <p class="validation-msg validation-msg--error" [hidden]="!isRequiredError">Required</p>
+</div>
+
 <button (click)="searchValueConfirm()" [disabled]="isDisabled">Show user repo</button>
-<p [hidden]="!isRequiredError">required</p>

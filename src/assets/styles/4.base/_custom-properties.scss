@@ -1,0 +1,33 @@
+:root {
+  --bg-color-h: #{$bg-color-h};
+  --bg-color-s: #{$bg-color-s};
+  --bg-color-l: #{$bg-color-l};
+  --bg-color: var(--bg-color-h), var(--bg-color-s), var(--bg-color-l);
+
+  --primary-color-h: #{$primary-color-h};
+  --primary-color-s: #{$primary-color-s};
+  --primary-color-l: #{$primary-color-l};
+  --primary-color: var(--primary-color-h), var(--primary-color-s), var(--primary-color-l);
+
+  --secondary-color-h: #{$secondary-color-h};
+  --secondary-color-s: #{$secondary-color-s};
+  --secondary-color-l: #{$secondary-color-l};
+  --secondary-color: var(--secondary-color-h), var(--secondary-color-s), var(--secondary-color-l);
+
+  --danger-color-h: #{$danger-color-h};
+  --danger-color-s: #{$danger-color-s};
+  --danger-color-l: #{$danger-color-l};
+  --danger-color: var(--danger-color-h), var(--danger-color-s), var(--danger-color-l);
+  --danger-color-light: var(--danger-color-h), var(--danger-color-s), calc(var(--danger-color-l) + 10%);
+
+  --approve-color-h: #{$approve-color-h};
+  --approve-color-s: #{$approve-color-s};
+  --approve-color-l: #{$approve-color-l};
+  --approve-color: var(--approve-color-h), var(--approve-color-s), var(--approve-color-l);
+  --approve-color-light: var(--approve-color-h), var(--approve-color-s), calc(var(--approve-color-l) + 10%);
+
+  --base-space: #{$base-space};
+
+  --interactable-border-radious: 25px;
+  --block-border-radious: 6px;
+}
