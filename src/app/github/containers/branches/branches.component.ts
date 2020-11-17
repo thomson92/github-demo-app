@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IBranch } from '@github/models/branch.model';
 
 @Component({
@@ -7,12 +7,7 @@ import { IBranch } from '@github/models/branch.model';
   styleUrls: ['./branches.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BranchesComponent implements OnInit {
+export class BranchesComponent {
 
   @Input() branches: IBranch[];
-
-  constructor() { }
-
-  ngOnInit(): void { }
-
 }

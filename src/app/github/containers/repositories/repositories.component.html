@@ -1,5 +1,14 @@
 <ol class="mg-top--md">
-  <app-repository *ngFor="let repo of repositories | async" [repositoryData]="repo"
-    (showDetailsEvent)="fetchBranches($event)">
-  </app-repository>
+  <ng-container *ngIf="repositories | async as repos">
+    <app-repository *ngFor="let repo of repos" [repositoryData]="repo" (showDetailsEvent)="fetchBranches($event)">
+    </app-repository>
+
+    <p *ngIf="repos.length === 0">
+      This user does not have any repos.
+    </p>
+  </ng-container>
+
+  <p *ngIf="(isUserNameValid | async) === false">
+    User not found.
+  </p>
 </ol>

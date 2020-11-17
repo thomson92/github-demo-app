@@ -12,9 +12,11 @@ import { Observable } from 'rxjs';
 export class RepositoriesComponent {
 
   public repositories: Observable<IRepository[]>;
+  public isUserNameValid: Observable<boolean>;
 
   constructor(private githubFacade: GithubFacade) {
     this.repositories = githubFacade.getRepositories();
+    this.isUserNameValid = githubFacade.isUserNameValid();
   }
 
   public fetchBranches(repo: IRepository): void {

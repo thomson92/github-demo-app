@@ -28,7 +28,7 @@ export class GithubState {
     }
 
     public setUserNameValidity(isValid: boolean): void {
-        this.fetching.next(isValid);
+        this.userNameValid.next(isValid);
     }
 
     public setUserRepositories(userRepos: IRepository[]): void {
