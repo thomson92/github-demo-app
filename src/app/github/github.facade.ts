@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { GithubApi } from './api/github.api';
 import { IRepository } from './models/repository.model';
 import { GithubState } from './state/github.state';
-import { filter, finalize, flatMap, map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { IBranch } from './models/branch.model';
 
 @Injectable({
@@ -29,13 +29,13 @@ export class GithubFacade {
         this.githubState.setFetching(true);
         this.githubApi.getUserRepositories(userName)
             .pipe(
-                map(repositories => repositories
+                map(repos => repos
                     .filter(repo => repo.fork === false)
-                    .map(repository => {
+                    .map(repo => {
                         return {
-                            id: repository.id,
-                            name: repository.name,
-                            ownerLogin: repository.owner.login
+                            id: repo.id,
+                            name: repo.name,
+                            ownerLogin: repo.owner.login
                         } as IRepository;
                     })),
                 finalize(() => this.githubState.setFetching(false))
@@ -45,7 +45,7 @@ export class GithubFacade {
                     this.githubState.setUserRepositories(userRepos);
                     this.githubState.setUserNameValidity(true);
                 },
-                (error: any) => {
+                () => {
                     this.githubState.setUserRepositories(null);
                     this.githubState.setUserNameValidity(false);
                 }
