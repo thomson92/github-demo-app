@@ -10,6 +10,7 @@ import { FormControl } from '@angular/forms';
 export class SearchBarComponent {
 
   @Input() placeholderText: string;
+  @Input() buttonText: string;
   @Input() searchBarControl: FormControl;
   @Input() isDisabled: boolean;
   @Input() isRequiredError: boolean;
