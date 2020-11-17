@@ -11,9 +11,10 @@ import { Subscription, Observable } from 'rxjs';
 })
 export class SearchWrapperComponent implements OnInit, OnDestroy {
 
+  public readonly placeholderText = 'Provide github user name';
+  public readonly buttonText = 'Show user repos';
   public searchControl = new FormControl(null, Validators.required);
   public isDisabled = true;
-  public readonly placeholderText = 'Provide github user name';
   public isFetching: Observable<boolean>;
 
   private subscriptions = new Subscription();
