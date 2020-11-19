@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BranchComponent } from './branch.component';
+import { IBranch } from '../../models/branch.model';
 
 describe('BranchComponent', () => {
   let component: BranchComponent;
@@ -16,6 +17,12 @@ describe('BranchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BranchComponent);
     component = fixture.componentInstance;
+
+    component.branch = {
+      name : 'testName',
+      lastCommitSha: '123'
+    } as IBranch;
+
     fixture.detectChanges();
   });
 

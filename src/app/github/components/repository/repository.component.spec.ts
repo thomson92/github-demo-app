@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RepositoryComponent } from './repository.component';
+import { IRepository } from '../../models/repository.model';
 
 describe('RepositoryComponent', () => {
   let component: RepositoryComponent;
@@ -8,14 +9,20 @@ describe('RepositoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RepositoryComponent ]
+      declarations: [RepositoryComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RepositoryComponent);
     component = fixture.componentInstance;
+
+    component.repositoryData = {
+      name: 'testRepo',
+      ownerLogin: 'testLogin'
+    } as IRepository;
+
     fixture.detectChanges();
   });
 
