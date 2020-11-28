@@ -32,10 +32,13 @@ export class GithubFacade {
                 map(repos => repos
                     .filter(repo => repo.fork === false)
                     .map(repo => {
+
+                        const { id, name, owner: { login } } = repo;
+
                         return {
-                            id: repo.id,
-                            name: repo.name,
-                            ownerLogin: repo.owner.login
+                            id,
+                            name,
+                            ownerLogin: login
                         } as IRepository;
                     })),
                 finalize(() => this.githubState.setFetching(false))
@@ -57,23 +60,19 @@ export class GithubFacade {
         this.githubApi.getRepoBranches(userName, repo.name)
             .pipe(
                 map(branches => branches.map(branch => {
+
+                    const { name, commit: { sha } = null } = branch;
+
                     return {
-                        name: branch.name,
-                        lastCommitSha: branch?.commit.sha
+                        name,
+                        lastCommitSha: sha
                     } as IBranch;
                 })),
                 finalize(() => this.githubState.setFetching(false))
             )
             .subscribe(
-                (branches: any[]) => {
-
-                    const repoToReplace = {
-                        id: repo.id,
-                        name: repo.name,
-                        ownerLogin: repo.ownerLogin,
-                        branches
-                    } as IRepository;
-
+                (branches: IBranch[]) => {
+                    const repoToReplace = GithubFacade.createRepoWithBranches(repo, branches);
                     this.githubState.updateFetchedRepositories(repoToReplace);
                 },
                 (error: any) => {
@@ -81,5 +80,16 @@ export class GithubFacade {
                     console.error(error);
                 }
             );
+    }
+
+    private static createRepoWithBranches(repo: IRepository, branches: IBranch[]): IRepository {
+        const { id, name, ownerLogin } = repo;
+
+        return {
+            id,
+            name,
+            ownerLogin,
+            branches
+        } as IRepository;
     }
 }

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchWrapperComponent } from './search-wrapper.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 describe('SearchWrapperComponent', () => {
   let component: SearchWrapperComponent;
@@ -8,7 +9,9 @@ describe('SearchWrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchWrapperComponent ]
+      declarations: [ SearchWrapperComponent ],
+      imports: [HttpClientModule],
+      providers: [HttpClient]
     })
     .compileComponents();
   });
